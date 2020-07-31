@@ -36,6 +36,7 @@ o	For demonstrating the situation when there is a customer to be attended to or 
 
 
 Correctness Properties:
+
 	Safety Properties: 
 
 •	Mutual Exclusion: According to this, two threads must not interfere with each other’s execution of a block of code or interfere with a common updation of a collection variable. In our code, we use a synchronized block on the lists to prevent the threads from performing updations on the Lists simultaneously.  To further make the system more thread-safe, we are using CopyOnWrite Lists in place of normal lists, which are a thread-safe version of lists. 
