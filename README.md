@@ -37,11 +37,13 @@ o	For demonstrating the situation when there is a customer to be attended to or 
 
 Correctness Properties:
 	Safety Properties: 
+
 •	Mutual Exclusion: According to this, two threads must not interfere with each other’s execution of a block of code or interfere with a common updation of a collection variable. In our code, we use a synchronized block on the lists to prevent the threads from performing updations on the Lists simultaneously.  To further make the system more thread-safe, we are using CopyOnWrite Lists in place of normal lists, which are a thread-safe version of lists. 
 
 •	Deadlock: The deadlock state is when two threads are waiting for a mutual resource and as both threads are stuck in such a state the entire system comes to a halt. This situation is terminated in our system as customers keep coming in random order and the barber continues with his hair cut. Either the barber waits for customers or the customer wait in the waiting chairs and hence both are not waiting at the same time.
 
-	Liveness Properties: 
+	Liveness Properties:
+
 •	Starvation: Starvation is when either of the process is waiting for a resource and the other thread continues to hold onto the resource/continues to get inputs, which puts the first thread in an indefinite wait state. This state is not encountered in our system because once the barber continues to clear customers, new customers come into the barber shop in a random order and until the barber is working, the customers are automatically generated and hence the threads support each other to prevent starvation.
 
 •	Fairness: Fairness refers to the concept of allocating resources to a thread. In our system, the FIFO(First in first out) is followed. The customer who comes in first is attended by the barber and the customer who comes in when all the chairs are full, is placed on the waiting chair and transferred into the barber chair after the chair is free, in the order of their arrival and because of this, our system is said to have a fair allocation of resources.
